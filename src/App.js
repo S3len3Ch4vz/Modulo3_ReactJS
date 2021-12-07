@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
+import {Greeting} from "./components/Greeting"
 function App() {
   return (
     <div className="App">
@@ -15,8 +16,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React holi 
         </a>
+        <Greeting name="Selene"/>
       </header>
     </div>
   );
