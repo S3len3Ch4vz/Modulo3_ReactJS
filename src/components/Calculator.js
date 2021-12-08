@@ -42,10 +42,19 @@ function Calculator({value1, value2, operator=""}) {
            break;
         case "multiplicacion":
             result = value1 * value2
-        default:
             break;
+        default:
+            return (<div> 
+                <p>  El operador no es valido</p>
+                 </div>
+                 
+             );
     }
-    return 
+    return (<div> 
+        <p>  El resultado de {operator} es = {result}</p>
+         </div>
+         
+     );
   
     
 }
