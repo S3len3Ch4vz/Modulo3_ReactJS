@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 // Styles
 import "./Counter.css";
 
-export default function Counter() {
+ function Counter() {
 	const [counter, setCounter] = useState(0);
 	const [otherCounter, setOtherCounter] = useState(0);
 
@@ -37,3 +37,5 @@ export default function Counter() {
 		</div>
 	);
 }
+
+export default Counter;

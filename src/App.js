@@ -3,7 +3,7 @@ import "./App.css";
 
 // Components
 import Counter from "./components/Counter";
-
+import NavBar from "./components/NavBar";
 function App() {
 	return (
 		<div className="App">
@@ -11,6 +11,7 @@ function App() {
 				<img src={logo} className="App-logo" alt="logo" />
 
 				<Counter />
+        <NavBar/>
 			</header>
 		</div>
 	);
