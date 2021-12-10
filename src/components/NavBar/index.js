@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import "./NavBar.css";
 
 function NavBar() {
-	const [active, setActive] = useState(3);
+	const [active, setActive] = useState(1);
 
 	const handleClick = (itemID) => {
 		setActive(itemID);
@@ -17,12 +17,18 @@ function NavBar() {
 			<ul>
 				<li className={checkActive(1)} onClick={(e) => handleClick(1)}>
 					Item 1
+                    <div hidden ={checkActive(1) ? false : true}>Mucho Texto en 
+                    la lista del Item 1</div>
 				</li>
 				<li className={checkActive(2)} onClick={() => handleClick(2)}>
 					Item 2
+                    <div hidden ={checkActive(2) ? false : true}>Mucho Texto en 
+                    la lista del Item 2</div>
 				</li>
 				<li className={checkActive(3)} onClick={() => handleClick(3)}>
 					Item 3
+                    <div hidden ={checkActive(3) ? false : true}>Mucho Texto en 
+                    la lista del Item 3</div>
 				</li>
 			</ul>
 		</div>
