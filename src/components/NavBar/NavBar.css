@@ -14,3 +14,13 @@ li:hover {
 .li-active {
 	color: rgb(26, 87, 200);
 }
+
+li div{
+    padding-left: 8px;
+    background: white;
+    padding-right: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
