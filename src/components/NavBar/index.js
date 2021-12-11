@@ -5,9 +5,25 @@ import koders from "C:/Users/flor_/Downloads/KODEMIA/ReactJS/my-firts-app/src/he
 // Styles
 import "./NavBar.css";
 
-function NavBar(props) {
+function NavBar() {
 	const [active, setActive] = useState(1);
-    console.log(koders)
+//	const [Koders, setKoders] = useState([])
+    
+
+	
+/*
+useEffect(() => {
+		// await fetch()
+		setTimeout(() => {
+			const response = koders;
+			setKoders(response);
+		}, 3000);
+	}, )
+*/
+	console.log(koders)
+//	console.log(Koders)
+	
+
 	const handleClick = (itemID) => {
 		setActive(itemID);
 	};
@@ -17,6 +33,19 @@ function NavBar(props) {
 
 	return (
 		<div>
+			 <ul>
+			   {
+				koders.map((koder) => (
+					<li key={koder.id}
+					className={checkActive(koder.id)}
+					onClick={() => handleClick(koder.id)}
+					>
+                     {koder.firstName}{koder.lastName} 
+					</li>
+				))
+			   }
+		   </ul>
+		   <br/>
 			<ul>
 				<li className={checkActive(1)} onClick={(e) => handleClick(1)}>
 					Item 1 
@@ -34,7 +63,10 @@ function NavBar(props) {
                     la lista del Item 3</div>
 				</li>
 			</ul>
+		
+          
 		</div>
+
 	);
 }
 
