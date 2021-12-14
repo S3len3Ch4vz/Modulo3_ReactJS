@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import koders from "C:/Users/flor_/Downloads/KODEMIA/ReactJS/my-firts-app/src/helper/koders.json";
+import React, {useState, useEffect} from "react";
+//import {koders} from "C:/Users/flor_/Downloads/KODEMIA/ReactJS/my-firts-app/src/helper/koders.json";
 
 
 // Styles
@@ -7,19 +7,23 @@ import "./NavBar.css";
 
 function NavBar() {
 	const [active, setActive] = useState(1);
-//	const [Koders, setKoders] = useState([])
+    const [koders, setKoders] = useState([])
     
 
 	
-/*
+
 useEffect(() => {
-		// await fetch()
-		setTimeout(() => {
-			const response = koders;
-			setKoders(response);
-		}, 3000);
-	}, )
-*/
+	 const getUsers = async () => {
+        // await fetch()
+		const response = await fetch("koders.json")
+	   console.table(response);
+      const data = await response.json();
+	  console.log(data);
+	  setKoders(data.koders)
+	}; 
+	getUsers();
+	},[] );
+  
 	console.log(koders)
 //	console.log(Koders)
 	
