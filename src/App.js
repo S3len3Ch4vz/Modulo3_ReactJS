@@ -8,22 +8,45 @@ import { useEffect, useState } from "react";
 import CharactersInfo from "./components/CharactersAPI";
 
 
+//Services 
+import {listCharacters} from "./services/characters";
+
 function App() {
 
 	const [characters, setCharacters] = useState([]);
-    
+    const [data , setData] = useState({})
+
 	useEffect(() => {
-		const getCharacters = async () => {
-			const response = await fetch("https://rickandmortyapi.com/api/character");
-			console.table(response);
-			const data = await response.json();
-			console.log(data);
-			setCharacters(data.results); 
+		const list = async () => {
+			const {results, info} = await listCharacters();
+	
+			setCharacters(results); 
+			setData(info);
         
-		}
+		};
 		
-	 getCharacters();
+		list();
+
 	}, []);
+
+	const handleClick = async (action) => {
+		if (action === "next" && data.next != null) {
+			const page = data.next.split("?")[1];
+			const { results, info } = await listCharacters(page);
+			setCharacters(results);
+			setData(info);
+		}
+		if (action === "prev" && data.prev != null) {
+			const page = data.prev.split("?")[1];
+			const {results, info} = await listCharacters(page);
+			setCharacters(results);
+            setData(info);
+		}
+
+	}; 
+	console.log(data);
+
+
 
     const charactersUI = characters.map(({id, name , status, species, image }) => (
 		<CharactersInfo key={id} name={name} status={status} species={species} image={image} />
@@ -31,12 +54,18 @@ function App() {
 
 	return (
 		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				
-
-			</header>
+		
+			<div className="buttons">	
+				<button onClick={() => handleClick("next")}>
+			Next
+		</button> 
+		  <button onClick={() => handleClick("prev")}> 
+           Prev
+		  </button>
+           </div>
+		
          <CharactersInfo/> {charactersUI}
+
 		</div>
 	);
 }
