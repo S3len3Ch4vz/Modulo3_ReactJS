@@ -1,3 +1,3 @@
-const Rick_and_Morty_API = "https://rickandmortyapi.com/api/";
+const Base_URL = "https://react-14g-default-rtdb.firebaseio.com/";
 
-export {Rick_and_Morty_API};
+export { Base_URL}; 
