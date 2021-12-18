@@ -18,6 +18,11 @@ const getUsers = async () => {
 	return await response.json();
 };
 
+const getUser = async (id) => {
+	const response = await fetch(`${Base_URL}users/${id}.json`);
+	return await response.json();
+};
 
-export {PostUser, getUsers}; 
+
+export {PostUser, getUsers, getUser}; 
 

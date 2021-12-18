@@ -1,22 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //Pages
+import App from './App';
 import Users from "./pages/Users";
-import UsersNew from "./pages/UsersNew"
+import Home from "./pages/Home";
+import UsersNew from "./pages/UsersNew";
+import UsersList from "./pages/UsersList";
+import UsersDetail from "./pages/UsersDetail";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-			<Routes>
-				<Route path="/" element={<App />} />
-				<Route path="/users" element={<Users />} />
-        <Route path="/users/new" element={<UsersNew />} />
+		
+    <Routes>
+				<Route path="*" element={<h1>NOT FOUND!</h1>} />
+				<Route path="/" element={<App />}>
+					<Route index element={<Home />} />
+					<Route path="users" element={<Users />}>
+						<Route index element={<UsersList />} />
+						<Route path="new" element={<UsersNew />} />
+						<Route path=":userID" element={<UsersDetail />} />
+					</Route>
+				</Route>
 			</Routes>
+      
 		</BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
