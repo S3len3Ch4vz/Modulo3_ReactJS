@@ -1,16 +1,19 @@
 import React from 'react'
 
 //Importación de HOOK
-import {useNavigate} from 'react-router-dom'
-function Li({id, firstName, lastName}) {
+//import {useNavigate} from 'react-router-dom'
+function Li({text , buttonText, buttonText2, callback}) {
     
-    const navigate = useNavigate();
+ ///   const navigate = useNavigate();
 
     return (
-        <li onClick={(e) => navigate(`/users/${id}`)}>
-			{firstName} 
-			{lastName} 
-		</li>
+        
+        <div>
+            {text}
+            
+			<button onClick={callback}>{buttonText} </button>
+            <button onClick={callback}>{buttonText2} </button>
+        </div>
     )
 }
 

@@ -3,12 +3,15 @@ import { useState, useEffect } from 'react';
 
 //importar Hook
 
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams, Outlet} from "react-router-dom";
 import {getUser} from "../../services/users";
 
+//Icons
+import Test from "../../Icons/Test";
 function UsersDetail() {
     const [user, SetUser] = useState({});
     const params = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const get = async () => {
@@ -22,8 +25,13 @@ function UsersDetail() {
 
     return (
         <div>
-            Hola soy el detalle del usuario: {user?.firstName} {user?.lastName}
-        </div>
+			Hola soy el detalle del usuario: {user?.firstName} {user?.lastName}
+			<button onClick={() => navigate(`update`)}>
+				<Test />
+			</button>
+			<br />
+			<Outlet />
+		</div>
     )
 }
 export default UsersDetail;

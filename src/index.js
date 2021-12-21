@@ -10,20 +10,25 @@ import Users from "./pages/Users";
 import Home from "./pages/Home";
 import UsersNew from "./pages/UsersNew";
 import UsersList from "./pages/UsersList";
+import UsersUpdate from "./pages/UsersUpdate";
 import UsersDetail from "./pages/UsersDetail";
+import UsersDetailContainer from "./pages/UsersDetailContainer";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
 		
     <Routes>
-				<Route path="*" element={<h1>NOT FOUND!</h1>} />
+	     <Route path="*" element={<h1>NOT FOUND!</h1>} />
 				<Route path="/" element={<App />}>
 					<Route index element={<Home />} />
 					<Route path="users" element={<Users />}>
 						<Route index element={<UsersList />} />
 						<Route path="new" element={<UsersNew />} />
-						<Route path=":userID" element={<UsersDetail />} />
+						<Route path=":userID" element={<UsersDetailContainer />}>
+							<Route index element={<UsersDetail />} />
+							<Route path="update" element={<UsersUpdate />} />
+						</Route>
 					</Route>
 				</Route>
 			</Routes>
